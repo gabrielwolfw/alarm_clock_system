@@ -1,6 +1,6 @@
-15:06:07 **** Incremental Build of configuration Nios II for project clock_alarm_nios_bsp ****
+16:40:55 **** Incremental Build of configuration Nios II for project clock_alarm_nios_bsp ****
 make all 
 [BSP build complete]
 
-15:06:07 Build Finished (took 834ms)
+16:40:56 Build Finished (took 510ms)
 

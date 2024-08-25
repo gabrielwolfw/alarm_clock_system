@@ -12,16 +12,21 @@
 // Macros para escribir en los registros del temporizador
 #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), ALTERA_AVALON_TIMER_STATUS_REG, (data))
 #define IOWR_ALTERA_AVALON_TIMER_CONTROL(base, data) IOWR((base), ALTERA_AVALON_TIMER_CONTROL_REG, (data))
-
+// Definiciones básicas de macros para PIO
+#define IORD_ALTERA_AVALON_PIO_DATA(BASE)  (*(volatile unsigned int *)(BASE))
+#define IOWR_ALTERA_AVALON_PIO_DATA(BASE, DATA)  (*(volatile unsigned int *)(BASE) = (DATA))
+#define DISPLAY_PIO_BASE PIO_7SEGMENTS_0_BASE
 
 // Variables globales para el tiempo
 extern volatile int seconds;
 extern volatile int minutes;
 extern volatile int hours;
+extern volatile int clock_running;
 
 // Prototipos de funciones
 void timer_isr(void* context);
 void init_timer(void);
+void update_time_display(void);
 
 #endif /* TIMER_H_ */
 

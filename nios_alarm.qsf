@@ -85,4 +85,7 @@ set_location_assignment PIN_AD20 -to n_7segments[27]
 set_global_assignment -name QIP_FILE software/clock_alarm_nios/mem_init/meminit.qip
 set_global_assignment -name QSYS_FILE NIOS_PLATFORM.qsys
 set_global_assignment -name SYSTEMVERILOG_FILE nios_alarm.sv
+set_location_assignment PIN_AB30 -to switches_n[1]
+set_location_assignment PIN_AC29 -to reset_n
+set_location_assignment PIN_AA30 -to clk
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
