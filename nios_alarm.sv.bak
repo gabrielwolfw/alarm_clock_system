@@ -1,0 +1,7 @@
+module nios_alarm (
+		input logic        clk_clk,                                    
+		output logic [31:0] pio_7segments_0_external_connection_export, 
+		input logic [3:0]  pio_buttons_0_external_connection_export,   
+		input logic [1:0]  pio_switches_0_external_connection_export,  
+		input logic        reset_reset_n                               
+	);

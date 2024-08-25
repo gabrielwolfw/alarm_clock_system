@@ -1,0 +1,37 @@
+#include "timer.h"
+#include "system.h"
+#include "HAL/inc/sys/alt_irq.h"
+
+volatile int seconds = 0;
+volatile int minutes = 0;
+volatile int hours = 0;
+
+void timer_isr(void* context) {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+            if (hours >= 24) {
+                hours = 0;
+            }
+        }
+    }
+
+    // Reiniciar el temporizador
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+}
+
+void init_timer() {
+    alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID,
+                        TIMER_0_IRQ,
+                        timer_isr, NULL, NULL);
+
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+                                     ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+                                     ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
+                                     ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+}
+

@@ -1,0 +1,169 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "n_7segments[0]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[1]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[2]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[3]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[4]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[5]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[6]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[7]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[8]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[9]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[10]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[11]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[12]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[13]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[14]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[15]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[16]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[17]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[18]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[19]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[20]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[21]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[22]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[23]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[24]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[25]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[26]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[27]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[28]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[29]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[30]",
+					"strict" : false
+				},
+				{
+					"name" : "n_7segments[31]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "buttons_n[3]",
+					"strict" : false
+				},
+				{
+					"name" : "buttons_n[0]",
+					"strict" : false
+				},
+				{
+					"name" : "buttons_n[1]",
+					"strict" : false
+				},
+				{
+					"name" : "buttons_n[2]",
+					"strict" : false
+				},
+				{
+					"name" : "switches_n[0]",
+					"strict" : false
+				},
+				{
+					"name" : "switches_n[1]",
+					"strict" : false
+				},
+				{
+					"name" : "reset_n",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include "system.h"
+#include "timer.h"
+#include "utils.h"
+
+// Definiciones básicas de macros para PIO
+#define IORD_ALTERA_AVALON_PIO_DATA(BASE)  (*(volatile unsigned int *)(BASE))
+#define IOWR_ALTERA_AVALON_PIO_DATA(BASE, DATA)  (*(volatile unsigned int *)(BASE) = (DATA))
+
+// Direcciones base para los PIO
+#define BUTTON_PIO_BASE PIO_BUTTONS_0_BASE
+#define DISPLAY_PIO_BASE PIO_7SEGMENTS_0_BASE
+#define SWITCH_PIO_BASE PIO_SWITCHES_0_BASE
+
+
+void handle_buttons(){
+	//Controlar los botones y switches
+}
+
+
+// Tabla de conversión para números del 0 al 9 en displays de 7 segmentos
+const unsigned char digit_to_segment[10] = {
+    0x3F,  // 0
+    0x06,  // 1
+    0x5B,  // 2
+    0x4F,  // 3
+    0x66,  // 4
+    0x6D,  // 5
+    0x7D,  // 6
+    0x07,  // 7
+    0x7F,  // 8
+    0x6F   // 9
+};
+
+
+
+void update_time_display(){
+	//mostrar las horas en 2 displays unidades y decimas
+	//mostrar los minutos en 2 displays unidades y decimas
+	//salida pio de 7 segmentos de 32 bits para ser  divido en 8 bits para cada display en total 4 displays
+
+}
+
+int main() {
+    // Inicialización
+    init_timer();                // Inicializar temporizador
+    load_alarm_configuration();  // Cargar configuración de la alarma
+    load_current_time_configuration();  // Cargar configuración de la hora actual
+
+    while (1) {
+        handle_buttons();        // Manejar los botones
+        update_time_display();   // Actualizar el display con la hora y la alarma
+        // Aquí puedes agregar más lógica según sea necesario
+    }
+
+    return 0;
+}
+

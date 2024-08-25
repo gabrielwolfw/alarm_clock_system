@@ -1,11 +1,15 @@
 #ifndef TIMER_H_
 #define TIMER_H_
-#include "HAL/inc/alt_types.h"
-#include "altera_avalon_pio_regs.h"
 
-#define ALTERA_AVALON_TIMER_STATUS_REG 0  // Asigna el offset correcto del registro de estado
-#define ALTERA_AVALON_TIMER_CONTROL_REG 4 // Asigna el offset correcto del registro de control
+// Definiciones de las máscaras de control del temporizador
+#define ALTERA_AVALON_TIMER_CONTROL_START_MSK 0x04  // Iniciar el temporizador
+#define ALTERA_AVALON_TIMER_CONTROL_CONT_MSK  0x02  // Modo continuo
+#define ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK 0x01  // Habilitar interrupciones
 
+#define ALTERA_AVALON_TIMER_STATUS_REG 0  // Offset del registro de estado
+#define ALTERA_AVALON_TIMER_CONTROL_REG 4 // Offset del registro de control
+
+// Macros para escribir en los registros del temporizador
 #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), ALTERA_AVALON_TIMER_STATUS_REG, (data))
 #define IOWR_ALTERA_AVALON_TIMER_CONTROL(base, data) IOWR((base), ALTERA_AVALON_TIMER_CONTROL_REG, (data))
 
@@ -15,14 +19,9 @@ extern volatile int seconds;
 extern volatile int minutes;
 extern volatile int hours;
 
-// Variables para la alarma
-extern volatile int alarm_hours;
-extern volatile int alarm_minutes;
-extern volatile int alarm_enabled;
-
 // Prototipos de funciones
 void timer_isr(void* context);
 void init_timer(void);
 
-
 #endif /* TIMER_H_ */
+

@@ -1,71 +1,71 @@
 #include <stdio.h>
-#include "altera_avalon_pio_regs.h"
+#include <stdint.h>
 #include "system.h"
 #include "timer.h"
 #include "utils.h"
 
-// Direcciones base para los PIO (definidas en system.h)
+// Definiciones básicas de macros para PIO
+#define IORD_ALTERA_AVALON_PIO_DATA(BASE)  (*(volatile unsigned int *)(BASE))
+#define IOWR_ALTERA_AVALON_PIO_DATA(BASE, DATA)  (*(volatile unsigned int *)(BASE) = (DATA))
+
+// Direcciones base para los PIO
 #define BUTTON_PIO_BASE PIO_BUTTONS_0_BASE
 #define DISPLAY_PIO_BASE PIO_7SEGMENTS_0_BASE
+#define SWITCH_PIO_BASE PIO_SWITCHES_0_BASE
 
-// Variables globales para la configuración de la alarma
-volatile int alarm_hours = 7;
-volatile int alarm_minutes = 0;
-volatile int alarm_enabled = 1;
 
-// Funciones para actualizar los displays de 7 segmentos
-void update_display(int display_num, int value) {
-    // Enviar valor al display especificado
-    IOWR_ALTERA_AVALON_PIO_DATA(DISPLAY_PIO_BASE + display_num, value);
+void handle_buttons(){
+	//Controlar los botones y switches
 }
 
-// Función para manejar la configuración de la alarma con botones y switches
-void handle_buttons() {
-    int btns = IORD_ALTERA_AVALON_PIO_DATA(BUTTON_PIO_BASE);
-    int switches = IORD_ALTERA_AVALON_PIO_DATA(PIO_SWITCHES_0_BASE);
 
-    if (btns & 0x01) {  // Botón 1
-        alarm_hours = (alarm_hours + 1) % 24;
-    }
-    if (btns & 0x02) {  // Botón 2
-        alarm_minutes = (alarm_minutes + 1) % 60;
-    }
-    if (btns & 0x04) {  // Botón 3
-        if (switches & 0x01) {  // Si el switch está en 1
-            save_alarm_configuration();
-        } else {  // Si el switch está en 0
-            save_current_time_configuration();
-        }
-    }
-    if (btns & 0x08) {  // Botón 4
-        alarm_enabled = 0;
-    }
-}
+// Tabla de conversión para números del 0 al 9 en displays de 7 segmentos
+const unsigned char digit_to_segment[10] = {
+    0x3F,  // 0b00111111
+    0x06,  // 0b00000110
+    0x5B,  // 0b01011011
+    0x4F,  // 0b01001111
+    0x66,  // 0b01100110
+    0x6D,  // 0b01101101
+    0x7D,  // 0b01111101
+    0x07,  // 0b00000111
+    0x7F,  // 0b01111111
+    0x6F   // 0b01101111
+};
 
-// Función para actualizar la visualización del reloj y la alarma
+
+
 void update_time_display() {
-    int hours_display = (alarm_hours / 10) << 4 | (alarm_hours % 10);
-    int minutes_display = (alarm_minutes / 10) << 4 | (alarm_minutes % 10);
-    int alarm_hours_display = (alarm_hours / 10) << 4 | (alarm_hours % 10);
-    int alarm_minutes_display = (alarm_minutes / 10) << 4 | (alarm_minutes % 10);
+    // Variables para los valores de los displays
+    uint32_t display_data = 0;
 
-    // Actualizar los displays
-    update_display(0, hours_display);
-    update_display(1, minutes_display);
-    update_display(2, alarm_hours_display);
-    update_display(3, alarm_minutes_display);
+    // Convertir horas y minutos a valores adecuados para los displays (7 bits cada uno)
+    uint8_t hours_tens = (hours / 10) & 0x7F;  // Limitar a 7 bits
+    uint8_t hours_units = (hours % 10) & 0x7F; // Limitar a 7 bits
+    uint8_t minutes_tens = (minutes / 10) & 0x7F; // Limitar a 7 bits
+    uint8_t minutes_units = (minutes % 10) & 0x7F; // Limitar a 7 bits
+
+    // Asignar los valores a los bits correspondientes de los displays (7 bits por display)
+    display_data = (hours_tens << 21) | (hours_units << 14) |
+                   (minutes_tens << 7) | (minutes_units);
+
+    // Escribir los valores en el registro PIO
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, display_data);
 }
 
 int main() {
-    init_timer();
-    load_alarm_configuration();  // Cargar configuración al inicio
-    load_current_time_configuration();  // Cargar configuración de tiempo actual
+    // Inicialización
+    init_timer();                // Inicializar temporizador
+    load_alarm_configuration();  // Cargar configuración de la alarma
+    load_current_time_configuration();  // Cargar configuración de la hora actual
 
     while (1) {
-        handle_buttons();
-        update_time_display();
-        // Puedes agregar otras tareas aquí
+        handle_buttons();        // Manejar los botones
+        update_time_display();   // Actualizar el display con la hora y la alarma
+        usleep(100000);
+        // Aquí puedes agregar más lógica según sea necesario
     }
 
     return 0;
 }
+
