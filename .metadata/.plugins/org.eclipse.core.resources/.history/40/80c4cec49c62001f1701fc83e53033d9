@@ -1,0 +1,11 @@
+#ifndef UTILS_H_
+#define UTILS_H_
+
+#include "alt_types.h"
+
+// Prototipos de funciones para manejo de persistencia
+void save_alarm_settings(alt_u32 hours, alt_u32 minutes);
+void load_alarm_settings(alt_u32* hours, alt_u32* minutes);
+
+
+#endif /* UTILS_H_ */

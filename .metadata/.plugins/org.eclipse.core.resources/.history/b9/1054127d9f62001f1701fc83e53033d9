@@ -1,0 +1,11 @@
+#ifndef UTILS_H_
+#define UTILS_H_
+
+#include "system.h"
+
+// Prototipos de funciones para guardar configuraciones
+void save_alarm_configuration();
+void save_current_time_configuration();
+
+
+#endif /* UTILS_H_ */

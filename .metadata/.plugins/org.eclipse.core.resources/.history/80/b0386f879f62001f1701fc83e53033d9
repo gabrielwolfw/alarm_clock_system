@@ -1,0 +1,39 @@
+#include "utils.h"
+
+
+// Direcciones base para los PIO (asegúrate de definirlas en system.h)
+#define SWITCH_PIO_BASE PIO_SWITCHES_0_BASE
+
+// Variables globales para la configuración de la alarma y la hora actual
+extern volatile int alarm_hours;
+extern volatile int alarm_minutes;
+extern volatile int hours;
+extern volatile int minutes;
+
+// Función para guardar la configuración de la alarma
+void save_alarm_configuration() {
+    // Aquí puedes agregar código para guardar la configuración de la alarma
+    // Ejemplo: guardar en la memoria o en una variable global
+    printf("Configuración de alarma guardada: %02d:%02d\n", alarm_hours, alarm_minutes);
+}
+
+// Función para guardar la configuración de la hora actual
+void save_current_time_configuration() {
+    // Aquí puedes agregar código para guardar la configuración de la hora actual
+    // Ejemplo: guardar en la memoria o en una variable global
+    printf("Hora actual guardada: %02d:%02d\n", hours, minutes);
+}
+
+// Función para manejar el guardado de la configuración basado en el switch
+void handle_save_configuration() {
+    int switches = IORD_ALTERA_AVALON_PIO_DATA(SWITCH_PIO_BASE);
+
+    if (switches & 0x01) {  // Asumiendo que el switch 1 está en el bit 0
+        save_alarm_configuration();
+    } else {
+        save_current_time_configuration();
+    }
+}
+
+
+

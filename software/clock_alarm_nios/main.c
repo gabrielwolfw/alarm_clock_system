@@ -1,7 +1,8 @@
 #include <stdio.h>
-#include "timer.h"
 #include "altera_avalon_pio_regs.h"
 #include "system.h"
+#include "timer.h"
+#include "utils.h"
 
 // Direcciones base para los PIO (definidas en system.h)
 #define BUTTON_PIO_BASE PIO_BUTTONS_0_BASE
@@ -14,25 +15,30 @@ volatile int alarm_enabled = 1;
 
 // Funciones para actualizar los displays de 7 segmentos
 void update_display(int display_num, int value) {
-    IOWR_ALTERA_AVALON_PIO_DATA(DISPLAY_PIO_BASE, value);
+    // Enviar valor al display especificado
+    IOWR_ALTERA_AVALON_PIO_DATA(DISPLAY_PIO_BASE + display_num, value);
 }
 
-// Función para manejar la configuración de la alarma con botones
+// Función para manejar la configuración de la alarma con botones y switches
 void handle_buttons() {
     int btns = IORD_ALTERA_AVALON_PIO_DATA(BUTTON_PIO_BASE);
+    int switches = IORD_ALTERA_AVALON_PIO_DATA(PIO_SWITCHES_0_BASE);
 
-    if (btns & 0x01) {  // Asumiendo que el botón 1 está en el bit 0
-        alarm_hours = (alarm_hours + 1) % 24;  // Incrementa la hora, reinicia a 0 después de 23
+    if (btns & 0x01) {  // Botón 1
+        alarm_hours = (alarm_hours + 1) % 24;
     }
-    if (btns & 0x02) {  // Asumiendo que el botón 2 está en el bit 1
-        alarm_minutes = (alarm_minutes + 1) % 60;  // Incrementa los minutos, reinicia a 0 después de 59
+    if (btns & 0x02) {  // Botón 2
+        alarm_minutes = (alarm_minutes + 1) % 60;
     }
-    if (btns & 0x04) {  // Asumiendo que el botón 3 está en el bit 2
-        // Guardar cambios en la configuración de la alarma
-        // Aquí puedes agregar código para manejar la persistencia si es necesario
+    if (btns & 0x04) {  // Botón 3
+        if (switches & 0x01) {  // Si el switch está en 1
+            save_alarm_configuration();
+        } else {  // Si el switch está en 0
+            save_current_time_configuration();
+        }
     }
-    if (btns & 0x08) {  // Asumiendo que el botón 4 está en el bit 3
-        alarm_enabled = 0;  // Detiene la alarma
+    if (btns & 0x08) {  // Botón 4
+        alarm_enabled = 0;
     }
 }
 
@@ -52,6 +58,8 @@ void update_time_display() {
 
 int main() {
     init_timer();
+    load_alarm_configuration();  // Cargar configuración al inicio
+    load_current_time_configuration();  // Cargar configuración de tiempo actual
 
     while (1) {
         handle_buttons();

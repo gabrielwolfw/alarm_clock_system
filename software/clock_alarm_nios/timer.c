@@ -1,7 +1,8 @@
 #include "timer.h"
 #include "HAL/inc/sys/alt_irq.h"
-#include "drivers/inc/altera_avalon_timer_regs.h"
+#include "altera_avalon_pio_regs.h"
 #include "system.h"
+
 
 // Inicialización de las variables globales
 volatile int seconds = 0;
@@ -11,7 +12,6 @@ volatile int hours = 0;
 volatile int alarm_hours = 7;
 volatile int alarm_minutes = 0;
 volatile int alarm_enabled = 1;
-
 
 // Función para establecer la hora actual
 void set_time(int h, int m, int s) {
@@ -30,9 +30,6 @@ void set_alarm(int h, int m) {
 void enable_alarm(int enable) {
     alarm_enabled = enable;
 }
-
-
-
 
 // Implementación de la ISR del timer
 void timer_isr(void* context, alt_u32 id) {
