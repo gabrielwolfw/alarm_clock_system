@@ -26,10 +26,18 @@
 					</folderInfo>
 					<fileInfo id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.983928844.2036414634" name="utils.c" rcbsApplicability="disable" resourcePath="utils.c" toolsToInvoke="altera.tool.gnu.c.compiler.mingw.1018069804.1585791848">
 						<tool id="altera.tool.gnu.c.compiler.mingw.1018069804.1585791848" name="Nios II GCC C Compiler" superClass="altera.tool.gnu.c.compiler.mingw.1018069804">
-							<option id="gnu.c.compiler.option.include.paths.510603222" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+							<option id="gnu.c.compiler.option.include.paths.510603222" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 								<listOptionValue builtIn="false" value="&quot;C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios_bsp&quot;"/>
 							</option>
 							<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1250633642" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.983928844.2116987656" name="timer.c" rcbsApplicability="disable" resourcePath="timer.c" toolsToInvoke="altera.tool.gnu.c.compiler.mingw.1018069804.658532083">
+						<tool id="altera.tool.gnu.c.compiler.mingw.1018069804.658532083" name="Nios II GCC C Compiler" superClass="altera.tool.gnu.c.compiler.mingw.1018069804">
+							<option id="gnu.c.compiler.option.include.paths.630040158" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/clock_alarm_nios_bsp}&quot;"/>
+							</option>
+							<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1189621157" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 						</tool>
 					</fileInfo>
 					<fileInfo id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.983928844.546889778" name="main.c" rcbsApplicability="disable" resourcePath="main.c" toolsToInvoke="altera.tool.gnu.c.compiler.mingw.1018069804.496564710">

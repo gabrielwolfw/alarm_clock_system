@@ -1,9 +1,11 @@
 #include "timer.h"
 #include "HAL/inc/sys/alt_irq.h"
-#include "HAL/inc/io.h"
 #include "altera_avalon_pio_regs.h"
 #include "system.h"
 
+#define ALTERA_AVALON_TIMER_CONTROL_START_MSK (0x4)
+#define ALTERA_AVALON_TIMER_CONTROL_CONT_MSK (0x2)
+#define ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK  (0x1)
 
 // Inicialización de las variables globales
 volatile int seconds = 0;
@@ -32,9 +34,7 @@ void enable_alarm(int enable) {
     alarm_enabled = enable;
 }
 
-// Inicialización de la ISR del temporizador
-void timer_isr(void* context, alt_u32 id) {
-    // Actualizar el reloj
+void timer_isr(void* context) {
     seconds++;
     if (seconds >= 60) {
         seconds = 0;
@@ -48,13 +48,12 @@ void timer_isr(void* context, alt_u32 id) {
         }
     }
 
-    // Verificar si la alarma debe sonar
     if (alarm_enabled && hours == alarm_hours && minutes == alarm_minutes) {
-        // Código para activar la alarma (por ejemplo, encender un LED o hacer sonar un buzzer)
+        // Activar la alarma
     }
 
-    // Reiniciar el temporizador para permitir que la ISR vuelva a ejecutarse
-    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0,NULL);
+    // Reiniciar el temporizador
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
 }
 
 // Función para inicializar el temporizador
@@ -62,14 +61,11 @@ void init_timer() {
     // Registrar la ISR
     alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID,
                         TIMER_0_IRQ,
-                        timer_isr,
-                        NULL,
-                        NULL);
+                        timer_isr,NULL,NULL);
 
     // Iniciar el temporizador con interrupciones habilitadas
     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
-                                     ALTERA_AVALON_TIMER_CONTROL_START_MSK |
-                                     ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
+                                     ALTERA_AVALON_TIMER_CONTROL_START_MSK|
+                                     ALTERA_AVALON_TIMER_CONTROL_CONT_MSK|
                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
 }
-

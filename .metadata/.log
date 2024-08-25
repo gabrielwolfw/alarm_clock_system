@@ -63,3 +63,6 @@ java.lang.NullPointerException
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-08-24 22:51:36.412
 !MESSAGE Indexed 'clock_alarm_nios' (3 sources, 28 headers) in 0.129 sec: 1,048 declarations; 1,715 references; 4 unresolved inclusions; 0 syntax errors; 9 unresolved names (0.32%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-08-25 02:48:14.584
+!MESSAGE Indexed 'clock_alarm_nios' (3 sources, 34 headers) in 0.378 sec: 1,243 declarations; 2,100 references; 1 unresolved inclusions; 3 syntax errors; 3 unresolved names (0.09%)

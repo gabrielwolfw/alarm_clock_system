@@ -921,3 +921,593 @@ timer.c:73:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (fi
                                       ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
                                       ^
 make: *** [obj/default/timer.o] Error 1
+02:48:26 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:57:57: error: macro "IOWR_ALTERA_AVALON_TIMER_STATUS" passed 3 arguments, but takes just 2
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0,NULL);
+                                                         ^
+timer.c:57:5: error: 'IOWR_ALTERA_AVALON_TIMER_STATUS' undeclared (first use in this function)
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0,NULL);
+     ^
+timer.c:57:5: note: each undeclared identifier is reported only once for each function it appears in
+timer.c: In function 'init_timer':
+timer.c:65:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:70:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+     ^
+timer.c:71:38: error: 'ALTERA_AVALON_TIMER_CONTROL_START_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+                                      ^
+timer.c:72:38: error: 'ALTERA_AVALON_TIMER_CONTROL_CONT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
+                                      ^
+timer.c:73:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+                                      ^
+make: *** [obj/default/timer.o] Error 1
+02:48:28 **** Incremental Build of configuration Nios II for project clock_alarm_nios_bsp ****
+make all 
+[BSP build complete]
+02:50:28 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:58:52: error: macro "IOWR" requires 3 arguments, but only 2 given
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+                                                    ^
+In file included from timer.c:1:0:
+timer.h:6:54: error: 'IOWR' undeclared (first use in this function)
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:58:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.h:6:54: note: each undeclared identifier is reported only once for each function it appears in
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:58:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:66:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:71:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+     ^
+timer.c:73:38: error: 'ALTERA_AVALON_TIMER_CONTROL_CONT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_CONT_MSK|
+                                      ^
+timer.c:74:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+                                      ^
+make: *** [obj/default/timer.o] Error 1
+02:51:59 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:58:52: error: macro "IOWR" requires 3 arguments, but only 2 given
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+                                                    ^
+In file included from timer.c:1:0:
+timer.h:6:54: error: 'IOWR' undeclared (first use in this function)
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:58:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.h:6:54: note: each undeclared identifier is reported only once for each function it appears in
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:58:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:66:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:71:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+     ^
+timer.c:74:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+                                      ^
+make: *** [obj/default/timer.o] Error 1
+02:52:45 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:59:52: error: macro "IOWR" requires 3 arguments, but only 2 given
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+                                                    ^
+In file included from timer.c:1:0:
+timer.h:6:54: error: 'IOWR' undeclared (first use in this function)
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:59:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.h:6:54: note: each undeclared identifier is reported only once for each function it appears in
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:59:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:67:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:72:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+     ^
+timer.c:75:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+                                      ^
+make: *** [obj/default/timer.o] Error 1
+02:52:52 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:59:52: error: macro "IOWR" requires 3 arguments, but only 2 given
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+                                                    ^
+In file included from timer.c:1:0:
+timer.h:6:54: error: 'IOWR' undeclared (first use in this function)
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:59:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.h:6:54: note: each undeclared identifier is reported only once for each function it appears in
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:59:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:67:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:72:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+     ^
+timer.c:75:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+                                      ^
+make: *** [obj/default/timer.o] Error 1
+02:52:53 **** Incremental Build of configuration Nios II for project clock_alarm_nios_bsp ****
+make all 
+[BSP build complete]
+02:53:11 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:59:52: error: macro "IOWR" requires 3 arguments, but only 2 given
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+                                                    ^
+In file included from timer.c:1:0:
+timer.h:6:54: error: 'IOWR' undeclared (first use in this function)
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:59:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.h:6:54: note: each undeclared identifier is reported only once for each function it appears in
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:59:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:67:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:72:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+     ^
+make: *** [obj/default/timer.o] Error 1
+02:54:35 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c:9:0: warning: "IOWR_ALTERA_AVALON_TIMER_STATUS" redefined
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), ALTERA_AVALON_TIMER_STATUS_REG, (data))
+ ^
+In file included from timer.c:1:0:
+timer.h:6:0: note: this is the location of the previous definition
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+ ^
+In file included from ../clock_alarm_nios_bsp//drivers/inc/altera_avalon_pio_regs.h:34:0,
+                 from timer.h:4,
+                 from timer.c:1:
+timer.c: In function 'timer_isr':
+timer.c:9:67: error: 'ALTERA_AVALON_TIMER_STATUS_REG' undeclared (first use in this function)
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), ALTERA_AVALON_TIMER_STATUS_REG, (data))
+                                                                   ^
+../clock_alarm_nios_bsp//HAL/inc/io.h:70:33: note: in definition of macro '__IO_CALC_ADDRESS_NATIVE'
+   ((void *)(((alt_u8*)BASE) + ((REGNUM) * (SYSTEM_BUS_WIDTH/8))))
+                                 ^
+timer.c:9:54: note: in expansion of macro 'IOWR'
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), ALTERA_AVALON_TIMER_STATUS_REG, (data))
+                                                      ^
+timer.c:60:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c:9:67: note: each undeclared identifier is reported only once for each function it appears in
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), ALTERA_AVALON_TIMER_STATUS_REG, (data))
+                                                                   ^
+../clock_alarm_nios_bsp//HAL/inc/io.h:70:33: note: in definition of macro '__IO_CALC_ADDRESS_NATIVE'
+   ((void *)(((alt_u8*)BASE) + ((REGNUM) * (SYSTEM_BUS_WIDTH/8))))
+                                 ^
+timer.c:9:54: note: in expansion of macro 'IOWR'
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), ALTERA_AVALON_TIMER_STATUS_REG, (data))
+                                                      ^
+timer.c:60:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:68:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:73:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+     ^
+make: *** [obj/default/timer.o] Error 1
+02:56:31 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c:38:6: error: conflicting types for 'timer_isr'
+ void timer_isr(void* context) {
+      ^
+In file included from timer.c:1:0:
+timer.h:24:6: note: previous declaration of 'timer_isr' was here
+ void timer_isr(void* context, alt_u32 id);
+      ^
+make: *** [obj/default/timer.o] Error 1
+03:00:42 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c:38:6: error: two or more data types in declaration specifiers
+ void void timer_isr(void* context, alt_u32 id) {
+      ^
+timer.c: In function 'init_timer':
+timer.c:67:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+make: *** [obj/default/timer.o] Error 1
+03:06:18 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'init_timer':
+timer.c:67:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr);
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:65:5: error: too few arguments to function 'alt_ic_isr_register'
+     alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID,
+     ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: declared here
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+make: *** [obj/default/timer.o] Error 1
+03:06:39 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c:38:6: error: conflicting types for 'timer_isr'
+ void timer_isr(void* context) {
+      ^
+In file included from timer.c:1:0:
+timer.h:24:6: note: previous declaration of 'timer_isr' was here
+ void timer_isr(void* context, alt_u32 id);
+      ^
+timer.c: In function 'init_timer':
+timer.c:65:5: error: too few arguments to function 'alt_ic_isr_register'
+     alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID,
+     ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: declared here
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+make: *** [obj/default/timer.o] Error 1
+03:07:05 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c:38:6: error: conflicting types for 'timer_isr'
+ void timer_isr(void* context) {
+      ^
+In file included from timer.c:1:0:
+timer.h:24:6: note: previous declaration of 'timer_isr' was here
+ void timer_isr(void* context, alt_u32 id);
+      ^
+make: *** [obj/default/timer.o] Error 1
+03:08:20 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+Info: Compiling utils.c to obj/default/utils.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/utils.o utils.c
+utils.c:3:42: fatal error: altera_avalon_onchip_memory2.h: No such file or directory
+compilation terminated.
+make: *** [obj/default/utils.o] Error 1
+03:14:18 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+Info: Compiling utils.c to obj/default/utils.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/utils.o utils.c
+utils.c: In function 'save_alarm_configuration':
+utils.c:15:32: error: 'alarm_hours' undeclared (first use in this function)
+     alarm_config.alarm_hours = alarm_hours;
+                                ^
+utils.c:15:32: note: each undeclared identifier is reported only once for each function it appears in
+utils.c:16:34: error: 'alarm_minutes' undeclared (first use in this function)
+     alarm_config.alarm_minutes = alarm_minutes;
+                                  ^
+utils.c:17:34: error: 'alarm_enabled' undeclared (first use in this function)
+     alarm_config.alarm_enabled = alarm_enabled;
+                                  ^
+utils.c:20:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_ONCHIP_MEMORY2_DATA' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_ONCHIP_MEMORY2_DATA(RAM_BASE, ALARM_CONFIG_OFFSET, *(int*)&alarm_config);
+     ^
+utils.c: In function 'save_current_time_configuration':
+utils.c:28:25: error: 'hours' undeclared (first use in this function)
+     time_config.hours = hours;
+                         ^
+utils.c:29:27: error: 'minutes' undeclared (first use in this function)
+     time_config.minutes = minutes;
+                           ^
+utils.c: In function 'load_alarm_configuration':
+utils.c:42:35: warning: implicit declaration of function 'IORD_ALTERA_AVALON_ONCHIP_MEMORY2_DATA' [-Wimplicit-function-declaration]
+     alarm_config = *(AlarmConfig*)IORD_ALTERA_AVALON_ONCHIP_MEMORY2_DATA(RAM_BASE, ALARM_CONFIG_OFFSET);
+                                   ^
+utils.c:44:5: error: 'alarm_hours' undeclared (first use in this function)
+     alarm_hours = alarm_config.alarm_hours;
+     ^
+utils.c:45:5: error: 'alarm_minutes' undeclared (first use in this function)
+     alarm_minutes = alarm_config.alarm_minutes;
+     ^
+utils.c:46:5: error: 'alarm_enabled' undeclared (first use in this function)
+     alarm_enabled = alarm_config.alarm_enabled;
+     ^
+utils.c: In function 'load_current_time_configuration':
+utils.c:58:5: error: 'hours' undeclared (first use in this function)
+     hours = time_config.hours;
+     ^
+utils.c:59:5: error: 'minutes' undeclared (first use in this function)
+     minutes = time_config.minutes;
+     ^
+make: *** [obj/default/utils.o] Error 1
+03:15:11 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling utils.c to obj/default/utils.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/utils.o utils.c
+utils.c: In function 'save_alarm_configuration':
+utils.c:16:32: error: 'alarm_hours' undeclared (first use in this function)
+     alarm_config.alarm_hours = alarm_hours;
+                                ^
+utils.c:16:32: note: each undeclared identifier is reported only once for each function it appears in
+utils.c:17:34: error: 'alarm_minutes' undeclared (first use in this function)
+     alarm_config.alarm_minutes = alarm_minutes;
+                                  ^
+utils.c:18:34: error: 'alarm_enabled' undeclared (first use in this function)
+     alarm_config.alarm_enabled = alarm_enabled;
+                                  ^
+utils.c:21:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_ONCHIP_MEMORY2_DATA' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_ONCHIP_MEMORY2_DATA(RAM_BASE, ALARM_CONFIG_OFFSET, *(int*)&alarm_config);
+     ^
+utils.c: In function 'save_current_time_configuration':
+utils.c:29:25: error: 'hours' undeclared (first use in this function)
+     time_config.hours = hours;
+                         ^
+utils.c:30:27: error: 'minutes' undeclared (first use in this function)
+     time_config.minutes = minutes;
+                           ^
+utils.c: In function 'load_alarm_configuration':
+utils.c:43:35: warning: implicit declaration of function 'IORD_ALTERA_AVALON_ONCHIP_MEMORY2_DATA' [-Wimplicit-function-declaration]
+     alarm_config = *(AlarmConfig*)IORD_ALTERA_AVALON_ONCHIP_MEMORY2_DATA(RAM_BASE, ALARM_CONFIG_OFFSET);
+                                   ^
+utils.c:45:5: error: 'alarm_hours' undeclared (first use in this function)
+     alarm_hours = alarm_config.alarm_hours;
+     ^
+utils.c:46:5: error: 'alarm_minutes' undeclared (first use in this function)
+     alarm_minutes = alarm_config.alarm_minutes;
+     ^
+utils.c:47:5: error: 'alarm_enabled' undeclared (first use in this function)
+     alarm_enabled = alarm_config.alarm_enabled;
+     ^
+utils.c: In function 'load_current_time_configuration':
+utils.c:59:5: error: 'hours' undeclared (first use in this function)
+     hours = time_config.hours;
+     ^
+utils.c:60:5: error: 'minutes' undeclared (first use in this function)
+     minutes = time_config.minutes;
+     ^
+make: *** [obj/default/utils.o] Error 1
+03:17:01 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling utils.c to obj/default/utils.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/utils.o utils.c
+utils.c: In function 'save_alarm_configuration':
+utils.c:29:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_ONCHIP_MEMORY2_DATA' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_ONCHIP_MEMORY2_DATA(RAM_BASE, ALARM_CONFIG_OFFSET, *(int*)&alarm_config);
+     ^
+utils.c: In function 'load_alarm_configuration':
+utils.c:51:35: warning: implicit declaration of function 'IORD_ALTERA_AVALON_ONCHIP_MEMORY2_DATA' [-Wimplicit-function-declaration]
+     alarm_config = *(AlarmConfig*)IORD_ALTERA_AVALON_ONCHIP_MEMORY2_DATA(RAM_BASE, ALARM_CONFIG_OFFSET);
+                                   ^
+Info: Linking clock_alarm_nios.elf
+nios2-elf-g++  -T'../clock_alarm_nios_bsp//linker.x' -msys-crt0='../clock_alarm_nios_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../clock_alarm_nios_bsp/  -msmallc  -Wl,-Map=clock_alarm_nios.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o clock_alarm_nios.elf obj/default/main.o obj/default/timer.o obj/default/utils.o -lm -msys-lib=m
+obj/default/timer.o:(.sdata+0x0): multiple definition of `alarm_enabled'
+obj/default/main.o:(.sdata+0x0): first defined here
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: Disabling relaxation: it will not work with multiple definitions
+obj/default/timer.o: In function `timer_isr':
+C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/timer.c:39: multiple definition of `alarm_hours'
+obj/default/main.o:C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/main.c:19: first defined here
+obj/default/timer.o: In function `timer_isr':
+C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/timer.c:38: multiple definition of `alarm_minutes'
+obj/default/main.o:C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/main.c:19: first defined here
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o): In function `_write_r':
+/build/arc/temp/823101626/ACDS_lwr/ip/sopc/app/gnu/BUILD/gnu/build-newlib_small.nios2-elf.x86_64-w64-mingw32/nios2-elf/mno-hw-mul/newlib/libc/reent/../../../../../../src/newlib-2.2/newlib/libc/reent/writer.c:58: warning: warning: write is not implemented and will always fail
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: clock_alarm_nios.elf section `.text' will not fit in region `rom_0'
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: region `rom_0' overflowed by 428 bytes
+obj/default/utils.o: In function `save_alarm_configuration':
+C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/utils.c:29: undefined reference to `IOWR_ALTERA_AVALON_ONCHIP_MEMORY2_DATA'
+obj/default/utils.o: In function `save_current_time_configuration':
+C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/utils.c:41: undefined reference to `IOWR_ALTERA_AVALON_ONCHIP_MEMORY2_DATA'
+obj/default/utils.o: In function `load_alarm_configuration':
+C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/utils.c:51: undefined reference to `IORD_ALTERA_AVALON_ONCHIP_MEMORY2_DATA'
+obj/default/utils.o: In function `load_current_time_configuration':
+C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/utils.c:65: undefined reference to `IORD_ALTERA_AVALON_ONCHIP_MEMORY2_DATA'
+collect2.exe: error: ld returned 1 exit status
+make: *** [clock_alarm_nios.elf] Error 1
+03:18:37 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling utils.c to obj/default/utils.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/utils.o utils.c
+Info: Linking clock_alarm_nios.elf
+nios2-elf-g++  -T'../clock_alarm_nios_bsp//linker.x' -msys-crt0='../clock_alarm_nios_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../clock_alarm_nios_bsp/  -msmallc  -Wl,-Map=clock_alarm_nios.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o clock_alarm_nios.elf obj/default/main.o obj/default/timer.o obj/default/utils.o -lm -msys-lib=m
+obj/default/timer.o:(.sdata+0x0): multiple definition of `alarm_enabled'
+obj/default/main.o:(.sdata+0x0): first defined here
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: Disabling relaxation: it will not work with multiple definitions
+obj/default/timer.o: In function `timer_isr':
+C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/timer.c:39: multiple definition of `alarm_hours'
+obj/default/main.o:C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/main.c:19: first defined here
+obj/default/timer.o: In function `timer_isr':
+C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/timer.c:38: multiple definition of `alarm_minutes'
+obj/default/main.o:C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/main.c:19: first defined here
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o): In function `_write_r':
+/build/arc/temp/823101626/ACDS_lwr/ip/sopc/app/gnu/BUILD/gnu/build-newlib_small.nios2-elf.x86_64-w64-mingw32/nios2-elf/mno-hw-mul/newlib/libc/reent/../../../../../../src/newlib-2.2/newlib/libc/reent/writer.c:58: warning: warning: write is not implemented and will always fail
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: clock_alarm_nios.elf section `.text' will not fit in region `rom_0'
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: region `rom_0' overflowed by 356 bytes
+collect2.exe: error: ld returned 1 exit status
+make: *** [clock_alarm_nios.elf] Error 1
+03:23:27 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+Info: Linking clock_alarm_nios.elf
+nios2-elf-g++  -T'../clock_alarm_nios_bsp//linker.x' -msys-crt0='../clock_alarm_nios_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../clock_alarm_nios_bsp/  -msmallc  -Wl,-Map=clock_alarm_nios.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o clock_alarm_nios.elf obj/default/main.o obj/default/timer.o obj/default/utils.o -lm -msys-lib=m
+obj/default/timer.o:(.sdata+0x0): multiple definition of `alarm_enabled'
+obj/default/main.o:(.sdata+0x0): first defined here
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: Disabling relaxation: it will not work with multiple definitions
+obj/default/timer.o: In function `timer_isr':
+C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/timer.c:39: multiple definition of `alarm_hours'
+obj/default/main.o:C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/main.c:19: first defined here
+obj/default/timer.o: In function `timer_isr':
+C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/timer.c:38: multiple definition of `alarm_minutes'
+obj/default/main.o:C:\Users\lobok\Documents\Principios_Sistemas_Operativos\Tarea_1\alarm_clock_system\software\clock_alarm_nios/main.c:19: first defined here
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o): In function `_write_r':
+/build/arc/temp/823101626/ACDS_lwr/ip/sopc/app/gnu/BUILD/gnu/build-newlib_small.nios2-elf.x86_64-w64-mingw32/nios2-elf/mno-hw-mul/newlib/libc/reent/../../../../../../src/newlib-2.2/newlib/libc/reent/writer.c:58: warning: warning: write is not implemented and will always fail
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: clock_alarm_nios.elf section `.text' will not fit in region `rom_0'
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: region `rom_0' overflowed by 356 bytes
+collect2.exe: error: ld returned 1 exit status
+make: *** [clock_alarm_nios.elf] Error 1
