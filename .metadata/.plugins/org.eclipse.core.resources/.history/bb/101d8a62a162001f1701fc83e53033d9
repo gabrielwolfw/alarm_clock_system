@@ -1,7 +1,7 @@
 #include "timer.h"
 #include "HAL/inc/sys/alt_irq.h"
-#include "HAL/inc/io.h"
 #include "altera_avalon_pio_regs.h"
+#include "alt_irq.h"
 #include "system.h"
 
 
@@ -32,7 +32,7 @@ void enable_alarm(int enable) {
     alarm_enabled = enable;
 }
 
-// Inicialización de la ISR del temporizador
+// Implementación de la ISR del timer
 void timer_isr(void* context, alt_u32 id) {
     // Actualizar el reloj
     seconds++;
@@ -53,23 +53,23 @@ void timer_isr(void* context, alt_u32 id) {
         // Código para activar la alarma (por ejemplo, encender un LED o hacer sonar un buzzer)
     }
 
-    // Reiniciar el temporizador para permitir que la ISR vuelva a ejecutarse
-    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0,NULL);
+    // Reiniciar el timer para permitir que la ISR vuelva a ejecutarse
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
 }
 
-// Función para inicializar el temporizador
+// Implementación de la función para inicializar el timer
 void init_timer() {
-    // Registrar la ISR
-    alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID,
-                        TIMER_0_IRQ,
-                        timer_isr,
-                        NULL,
-                        NULL);
+    // Registrar la ISR del timer
+    alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID, // ID del controlador de interrupciones
+                        TIMER_0_IRQ,                       // IRQ del temporizador
+                        timer_isr,                         // Función ISR
+                        NULL,                              // Contexto (no usado aquí)
+                        NULL);                             // ID del controlador de interrupciones (no usado aquí)
 
-    // Iniciar el temporizador con interrupciones habilitadas
-    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
-                                     ALTERA_AVALON_TIMER_CONTROL_START_MSK |
-                                     ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
-                                     ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+    // Configurar y habilitar el timer
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,          // Dirección base del temporizador
+                                     ALTERA_AVALON_TIMER_CONTROL_START_MSK |        // Habilitar el temporizador
+                                     ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |         // Continuar contando
+                                     ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);     // Habilitar interrupciones
 }
 

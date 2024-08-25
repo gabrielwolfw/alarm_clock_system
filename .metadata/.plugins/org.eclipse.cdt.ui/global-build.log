@@ -572,3 +572,352 @@ make: *** [obj/default/timer.o] Error 1
 22:56:49 **** Incremental Build of configuration Nios II for project clock_alarm_nios_bsp ****
 make all 
 [BSP build complete]
+23:13:32 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:56:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_STATUS' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:62:25: error: 'TIMER_IRQ_INTERRUPT_CONTROLLER_ID' undeclared (first use in this function)
+     alt_ic_isr_register(TIMER_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, timer_isr, NULL, NULL);
+                         ^
+timer.c:62:25: note: each undeclared identifier is reported only once for each function it appears in
+timer.c:62:73: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+     alt_ic_isr_register(TIMER_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, timer_isr, NULL, NULL);
+                                                                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:63:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+     ^
+timer.c:63:52: error: 'ALTERA_AVALON_TIMER_CONTROL_START_MSK' undeclared (first use in this function)
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+                                                    ^
+timer.c:64:41: error: 'ALTERA_AVALON_TIMER_CONTROL_CONT_MSK' undeclared (first use in this function)
+                                         ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
+                                         ^
+timer.c:65:41: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                         ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);  // Iniciar el timer con interrupciones habilitadas
+                                         ^
+make: *** [obj/default/timer.o] Error 1
+23:13:34 **** Incremental Build of configuration Nios II for project clock_alarm_nios_bsp ****
+make all 
+[BSP build complete]
+23:14:39 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:56:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_STATUS' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:62:25: error: 'TIMER_IRQ_INTERRUPT_CONTROLLER_ID' undeclared (first use in this function)
+     alt_ic_isr_register(TIMER_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, timer_isr, NULL, NULL);
+                         ^
+timer.c:62:25: note: each undeclared identifier is reported only once for each function it appears in
+timer.c:62:73: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+     alt_ic_isr_register(TIMER_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, timer_isr, NULL, NULL);
+                                                                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:63:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+     ^
+timer.c:63:52: error: 'ALTERA_AVALON_TIMER_CONTROL_START_MSK' undeclared (first use in this function)
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+                                                    ^
+timer.c:64:41: error: 'ALTERA_AVALON_TIMER_CONTROL_CONT_MSK' undeclared (first use in this function)
+                                         ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
+                                         ^
+timer.c:65:41: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                         ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);  // Iniciar el timer con interrupciones habilitadas
+                                         ^
+make: *** [obj/default/timer.o] Error 1
+23:16:25 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:56:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_STATUS' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:64:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,                         // Función ISR
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:69:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,          // Dirección base del temporizador
+     ^
+timer.c:70:38: error: 'ALTERA_AVALON_TIMER_CONTROL_START_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_START_MSK |        // Habilitar el temporizador
+                                      ^
+timer.c:70:38: note: each undeclared identifier is reported only once for each function it appears in
+timer.c:71:38: error: 'ALTERA_AVALON_TIMER_CONTROL_CONT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |         // Continuar contando
+                                      ^
+timer.c:72:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);     // Habilitar interrupciones
+                                      ^
+make: *** [obj/default/timer.o] Error 1
+23:17:22 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c:4:21: fatal error: alt_irq.h: No such file or directory
+compilation terminated.
+make: *** [obj/default/timer.o] Error 1
+23:18:01 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:56:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_STATUS' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:64:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,                         // Función ISR
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:69:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,          // Dirección base del temporizador
+     ^
+timer.c:70:38: error: 'ALTERA_AVALON_TIMER_CONTROL_START_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_START_MSK |        // Habilitar el temporizador
+                                      ^
+timer.c:70:38: note: each undeclared identifier is reported only once for each function it appears in
+timer.c:71:38: error: 'ALTERA_AVALON_TIMER_CONTROL_CONT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |         // Continuar contando
+                                      ^
+timer.c:72:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);     // Habilitar interrupciones
+                                      ^
+make: *** [obj/default/timer.o] Error 1
+23:19:50 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:56:52: error: macro "IOWR" requires 3 arguments, but only 2 given
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+                                                    ^
+In file included from timer.c:1:0:
+timer.h:6:54: error: 'IOWR' undeclared (first use in this function)
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:56:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.h:6:54: note: each undeclared identifier is reported only once for each function it appears in
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:56:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:64:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,                         // Función ISR
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:69:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,          // Dirección base del temporizador
+     ^
+timer.c:70:38: error: 'ALTERA_AVALON_TIMER_CONTROL_START_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_START_MSK |        // Habilitar el temporizador
+                                      ^
+timer.c:71:38: error: 'ALTERA_AVALON_TIMER_CONTROL_CONT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |         // Continuar contando
+                                      ^
+timer.c:72:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);     // Habilitar interrupciones
+                                      ^
+make: *** [obj/default/timer.o] Error 1
+23:19:51 **** Incremental Build of configuration Nios II for project clock_alarm_nios_bsp ****
+make all 
+[BSP build complete]
+23:22:47 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:56:52: error: macro "IOWR" requires 3 arguments, but only 2 given
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+                                                    ^
+In file included from timer.c:1:0:
+timer.h:6:54: error: 'IOWR' undeclared (first use in this function)
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:56:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.h:6:54: note: each undeclared identifier is reported only once for each function it appears in
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:56:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:64:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:69:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+     ^
+timer.c:70:38: error: 'ALTERA_AVALON_TIMER_CONTROL_START_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+                                      ^
+timer.c:71:38: error: 'ALTERA_AVALON_TIMER_CONTROL_CONT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
+                                      ^
+timer.c:72:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+                                      ^
+make: *** [obj/default/timer.o] Error 1
+23:23:31 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c:2:21: fatal error: alt_irq.h: No such file or directory
+compilation terminated.
+make: *** [obj/default/timer.o] Error 1
+23:24:07 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c:3:28: fatal error: HAL/inc/sys/io.h: No such file or directory
+compilation terminated.
+make: *** [obj/default/timer.o] Error 1
+23:24:30 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:57:52: error: macro "IOWR" requires 3 arguments, but only 2 given
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+                                                    ^
+In file included from timer.c:1:0:
+timer.h:6:54: error: 'IOWR' undeclared (first use in this function)
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:57:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.h:6:54: note: each undeclared identifier is reported only once for each function it appears in
+ #define IOWR_ALTERA_AVALON_TIMER_STATUS(base, data)  IOWR((base), (data))
+                                                      ^
+timer.c:57:5: note: in expansion of macro 'IOWR_ALTERA_AVALON_TIMER_STATUS'
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+     ^
+timer.c: In function 'init_timer':
+timer.c:65:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:70:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+     ^
+timer.c:71:38: error: 'ALTERA_AVALON_TIMER_CONTROL_START_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+                                      ^
+timer.c:72:38: error: 'ALTERA_AVALON_TIMER_CONTROL_CONT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
+                                      ^
+timer.c:73:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+                                      ^
+make: *** [obj/default/timer.o] Error 1
+23:25:06 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+Info: Compiling timer.c to obj/default/timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../clock_alarm_nios_bsp//HAL/inc -I../clock_alarm_nios_bsp/ -I../clock_alarm_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/timer.o timer.c
+timer.c: In function 'timer_isr':
+timer.c:57:57: error: macro "IOWR_ALTERA_AVALON_TIMER_STATUS" passed 3 arguments, but takes just 2
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0,NULL);
+                                                         ^
+timer.c:57:5: error: 'IOWR_ALTERA_AVALON_TIMER_STATUS' undeclared (first use in this function)
+     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0,NULL);
+     ^
+timer.c:57:5: note: each undeclared identifier is reported only once for each function it appears in
+timer.c: In function 'init_timer':
+timer.c:65:25: warning: passing argument 3 of 'alt_ic_isr_register' from incompatible pointer type [-Wincompatible-pointer-types]
+                         timer_isr,
+                         ^
+In file included from timer.c:2:0:
+../clock_alarm_nios_bsp/HAL/inc/sys/alt_irq.h:195:12: note: expected 'alt_isr_func {aka void (*)(void *)}' but argument is of type 'void (*)(void *, alt_u32) {aka void (*)(void *, long unsigned int)}'
+ extern int alt_ic_isr_register(alt_u32 ic_id,
+            ^
+timer.c:70:5: warning: implicit declaration of function 'IOWR_ALTERA_AVALON_TIMER_CONTROL' [-Wimplicit-function-declaration]
+     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+     ^
+timer.c:71:38: error: 'ALTERA_AVALON_TIMER_CONTROL_START_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+                                      ^
+timer.c:72:38: error: 'ALTERA_AVALON_TIMER_CONTROL_CONT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
+                                      ^
+timer.c:73:38: error: 'ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK' undeclared (first use in this function)
+                                      ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+                                      ^
+make: *** [obj/default/timer.o] Error 1

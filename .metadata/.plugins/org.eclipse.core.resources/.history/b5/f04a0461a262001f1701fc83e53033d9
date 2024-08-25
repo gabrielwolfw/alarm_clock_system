@@ -54,7 +54,7 @@ void timer_isr(void* context, alt_u32 id) {
     }
 
     // Reiniciar el temporizador para permitir que la ISR vuelva a ejecutarse
-    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0,NULL);
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
 }
 
 // Función para inicializar el temporizador
