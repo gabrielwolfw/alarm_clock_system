@@ -12,28 +12,6 @@ volatile int alarm_hours = 7;
 volatile int alarm_minutes = 0;
 volatile int alarm_enabled = 1;
 
-
-// Función para establecer la hora actual
-void set_time(int h, int m, int s) {
-    if (h >= 0 && h < 24) hours = h;
-    if (m >= 0 && m < 60) minutes = m;
-    if (s >= 0 && s < 60) seconds = s;
-}
-
-// Función para establecer la hora de la alarma
-void set_alarm(int h, int m) {
-    if (h >= 0 && h < 24) alarm_hours = h;
-    if (m >= 0 && m < 60) alarm_minutes = m;
-}
-
-// Función para habilitar o deshabilitar la alarma
-void enable_alarm(int enable) {
-    alarm_enabled = enable;
-}
-
-
-
-
 // Implementación de la ISR del timer
 void timer_isr(void* context, alt_u32 id) {
     // Actualizar el reloj
