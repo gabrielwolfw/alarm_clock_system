@@ -1,0 +1,7 @@
+
+volatile int current_hour = 0;   // horas del reloj
+volatile int current_minute = 0; // minutos del reloj
+
+volatile int alarm_hour = 0;     //horas de la alarma
+volatile int alarm_minute = 0;   //minutos de la alarma
+volatile int alarm_active = 0;	 //Alarma apagada
