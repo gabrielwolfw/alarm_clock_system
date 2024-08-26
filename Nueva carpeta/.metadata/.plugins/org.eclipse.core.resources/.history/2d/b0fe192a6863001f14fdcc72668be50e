@@ -52,9 +52,10 @@ void timer_isr(void* context) {
             hours = 0;
         }
     }
-
-    // Actualizar el display con los valores actuales
     update_display(hours, minutes);
+
+    // Actualizar el display
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, (hours << 8) | minutes);
 
     // Limpiar la interrupción del temporizador
     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
