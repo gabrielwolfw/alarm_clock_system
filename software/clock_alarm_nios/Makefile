@@ -142,9 +142,7 @@ ACDS_VERSION := 18.1
 ELF := clock_alarm_nios.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += main.c
-C_SRCS += utils.c
-C_SRCS += timer.c
+C_SRCS := main.c
 CXX_SRCS :=
 ASM_SRCS :=
 

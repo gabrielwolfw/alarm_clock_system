@@ -1,0 +1,28 @@
+#include <stddef.h>
+#include "system.h"
+#include "timer.h"
+
+
+handle_btns(){
+
+}
+
+void update_display(){
+	//necesito que en 4 displays dividas de 7 segmentos tengo un pio de 32 bits en los que quiero que dividas
+}
+
+
+int main() {
+    // Inicializar el temporizador
+    timer_init();
+
+    // Configurar los displays de 7 segmentos
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, 0); // Inicializar los displays
+
+    while (1) {
+    	update_display();
+    }
+
+    return 0;
+}
+

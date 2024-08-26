@@ -1,21 +1,18 @@
-16:41:04 **** Build of configuration Nios II for project clock_alarm_nios ****
-make mem_init_generate 
+21:31:16 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
 Info: Building ../clock_alarm_nios_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
 [BSP build complete]
-Post-processing to create mem_init/NIOS_PLATFORM_ram_0.hex...
-elf2hex clock_alarm_nios.elf 0x00020000 0x0002082f --width=32 --little-endian-mem --create-lanes=0 mem_init/NIOS_PLATFORM_ram_0.hex
-Post-processing to create mem_init/NIOS_PLATFORM_rom_0.hex...
-elf2hex clock_alarm_nios.elf 0x00010000 0x00010fff --width=32 --little-endian-mem --create-lanes=0 mem_init/NIOS_PLATFORM_rom_0.hex
-Post-processing to create mem_init/hdl_sim/NIOS_PLATFORM_ram_0.dat...
-elf2dat --infile=clock_alarm_nios.elf --outfile=mem_init/hdl_sim/NIOS_PLATFORM_ram_0.dat \
-		--base=0x00020000 --end=0x0002082f --width=32 \
-		--little-endian-mem --create-lanes=0 
-Post-processing to create mem_init/hdl_sim/NIOS_PLATFORM_rom_0.dat...
-elf2dat --infile=clock_alarm_nios.elf --outfile=mem_init/hdl_sim/NIOS_PLATFORM_rom_0.dat \
-		--base=0x00010000 --end=0x00010fff --width=32 \
-		--little-endian-mem --create-lanes=0 
-Post-processing to create mem_init/hdl_sim/NIOS_PLATFORM_ram_0.sym...
-nios2-elf-nm -n clock_alarm_nios.elf > mem_init/hdl_sim/NIOS_PLATFORM_ram_0.sym
-Post-processing to create mem_init/hdl_sim/NIOS_PLATFORM_rom_0.sym...
-nios2-elf-nm -n clock_alarm_nios.elf > mem_init/hdl_sim/NIOS_PLATFORM_rom_0.sym
+[clock_alarm_nios build complete]
+21:31:20 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+[clock_alarm_nios build complete]
+21:31:30 **** Incremental Build of configuration Nios II for project clock_alarm_nios ****
+make all 
+Info: Building ../clock_alarm_nios_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../clock_alarm_nios_bsp/
+[BSP build complete]
+[clock_alarm_nios build complete]

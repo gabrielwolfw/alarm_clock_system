@@ -1,0 +1,14 @@
+#ifndef TIMER_H_
+#define TIMER_H_
+#include "alt_types.h"
+
+// Declaración de variables globales
+extern volatile int hours;
+extern volatile int minutes;
+
+// Declaración de funciones
+void timer_init(void);
+void timer_isr(void* context);
+
+
+#endif /* TIMER_H_ */

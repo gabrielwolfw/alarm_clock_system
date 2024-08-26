@@ -85,7 +85,7 @@
   <sld_infos>
     <sld_info hpath="NIOS_PLATFORM:plat" name="plat">
       <assignment_values>
-        <assignment_value text="QSYS_NAME NIOS_PLATFORM HAS_SOPCINFO 1 GENERATION_ID 1724625745"/>
+        <assignment_value text="QSYS_NAME NIOS_PLATFORM HAS_SOPCINFO 1 GENERATION_ID 1724643839"/>
       </assignment_values>
       <parameters/>
     </sld_info>
