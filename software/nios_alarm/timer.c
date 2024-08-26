@@ -1,0 +1,96 @@
+#include "timer.h"
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include "altera_avalon_timer_regs.h"
+#include "HAL/inc/sys/alt_irq.h"
+
+// Definiciones de variables globales
+volatile int hours = 0;
+volatile int minutes = 0;
+volatile int alarm_hours = 0;
+volatile int alarm_minutes = 0;
+volatile int alarm_active = 0;
+
+// Mapeo de dígitos a sus correspondientes valores en un display de 7 segmentos
+const alt_u8 SEGMENT_MAP[10] = {
+    0x3F, // 0
+    0x06, // 1
+    0x5B, // 2
+    0x4F, // 3
+    0x66, // 4
+    0x6D, // 5
+    0x7D, // 6
+    0x07, // 7
+    0x7F, // 8
+    0x6F  // 9
+};
+
+void update_display(int hours, int minutes) {
+    alt_u32 display_value = 0;
+
+    // Separar las horas y minutos en dígitos individuales
+    int hour_tens = hours / 10;
+    int hour_units = hours % 10;
+    int minute_tens = minutes / 10;
+    int minute_units = minutes % 10;
+
+    // Mapear los dígitos a sus correspondientes valores en 7 segmentos
+    display_value |= SEGMENT_MAP[hour_tens] << 21;  // Dígito más significativo
+    display_value |= SEGMENT_MAP[hour_units] << 14; // Segundo dígito
+    display_value |= SEGMENT_MAP[minute_tens] << 7; // Tercer dígito
+    display_value |= SEGMENT_MAP[minute_units];     // Dígito menos significativo
+
+    // Escribir el valor al PIO para actualizar los displays
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, display_value);
+}
+
+// Función de interrupción del temporizador
+void timer_isr(void* context) {
+    // Incrementar los minutos
+    minutes++;
+    if (minutes >= 60) {
+        minutes = 0;
+        hours++;
+        if (hours >= 24) {
+            hours = 0;
+        }
+    }
+
+    // Actualizar el display con los valores actuales
+    update_display(hours, minutes);
+
+
+
+    if (alarm_active && hours == alarm_hours && minutes == alarm_minutes) {
+        // Encender un dígito específico para indicar que la alarma está activa
+        IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, 0xFF);
+    } else {
+        // Apagar el dígito específico (o reiniciar el display a su valor normal)
+        IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, 0x00);
+    }
+
+    // Limpiar la interrupción del temporizador
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+}
+
+// Función para inicializar el temporizador
+void timer_init(void) {
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0); // Detener el temporizador
+    IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_0_BASE, TIMER_0_LOAD_VALUE & 0xFFFF); // Configurar el período bajo
+    IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_0_BASE, (TIMER_0_LOAD_VALUE >> 16) & 0xFFFF); // Configurar el período alto
+
+    // Iniciar el temporizador y habilitar la interrupción
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+        ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+        ALTERA_AVALON_TIMER_CONTROL_CONTINUOUS_MSK |
+        ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+
+    // Configurar el ISR
+    alt_ic_isr_register(
+        TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID,
+        TIMER_0_IRQ,
+        timer_isr,
+        NULL,
+        NULL
+    );
+}

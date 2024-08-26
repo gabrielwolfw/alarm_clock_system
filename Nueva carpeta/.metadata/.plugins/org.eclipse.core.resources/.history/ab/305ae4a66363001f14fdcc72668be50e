@@ -1,0 +1,104 @@
+#include <stddef.h>
+#include "system.h"
+#include "timer.h"
+#include "altera_avalon_pio_regs.h"
+#include "utils.h"
+
+// Variables globales para mantener el estado de la hora y la alarma
+volatile int config_mode = 0; // 0 = Configurar la alarma, 1 = Configurar el reloj
+
+void handle_btns() {
+    // Leer el estado de los botones
+    alt_u8 btns = IORD_ALTERA_AVALON_PIO_DATA(PIO_BUTTONS_0_BASE);
+
+    // Leer el estado de los switches
+    alt_u8 swtchs = IORD_ALTERA_AVALON_PIO_DATA(PIO_SWITCHES_0_BASE);
+
+    // Verificar el switch para determinar el modo de configuración
+    config_mode = swtchs & 0x01; // Si el switch 0 está en 1, configurar el reloj; si está en 0, configurar la alarma
+
+    // Incrementar la hora (Botón 0)
+    if (btns & 0x01) {
+        if (config_mode) {
+            // Configurar la hora del reloj
+            hours = (hours + 1) % 24;
+        } else {
+            // Configurar la hora de la alarma
+            alarm_hours = (alarm_hours + 1) % 24;
+        }
+    }
+
+    // Incrementar los minutos (Botón 1)
+    if (btns & 0x02) {
+        if (config_mode) {
+            // Configurar los minutos del reloj
+            minutes = (minutes + 1) % 60;
+        } else {
+            // Configurar los minutos de la alarma
+            alarm_minutes = (alarm_minutes + 1) % 60;
+        }
+    }
+
+    // Guardar la configuración (Botón 2)
+    if (btns & 0x04) {
+        // No se requiere ninguna acción adicional, ya que los cambios en la hora y minutos se actualizan automáticamente
+        // Aquí podrías agregar código para guardar la configuración en una memoria no volátil si es necesario
+    }
+
+    // Apagar la alarma (Botón 3)
+    if (btns & 0x08) {
+        // Desactivar la alarma (esto puede involucrar detener un sonido o una señal de alerta)
+        alarm_active = 0;
+    }
+}
+
+// Mapeo de dígitos a sus correspondientes valores en un display de 7 segmentos
+const alt_u8 SEGMENT_MAP[10] = {
+    0x3F, // 0
+    0x06, // 1
+    0x5B, // 2
+    0x4F, // 3
+    0x66, // 4
+    0x6D, // 5
+    0x7D, // 6
+    0x07, // 7
+    0x7F, // 8
+    0x6F  // 9
+};
+
+void update_display(int hours, int minutes) {
+    alt_u32 display_value = 0;
+
+    // Separar las horas y minutos en dígitos individuales
+    int hour_tens = hours / 10;
+    int hour_units = hours % 10;
+    int minute_tens = minutes / 10;
+    int minute_units = minutes % 10;
+
+    // Mapear los dígitos a sus correspondientes valores en 7 segmentos
+    display_value |= SEGMENT_MAP[hour_tens] << 21;  // Dígito más significativo
+    display_value |= SEGMENT_MAP[hour_units] << 14; // Segundo dígito
+    display_value |= SEGMENT_MAP[minute_tens] << 7; // Tercer dígito
+    display_value |= SEGMENT_MAP[minute_units];     // Dígito menos significativo
+
+    // Escribir el valor al PIO para actualizar los displays
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, display_value);
+}
+
+int main() {
+    // Inicializar el temporizador
+	timer_init();
+
+    // Configurar los displays de 7 segmentos
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, 0); // Inicializar los displays
+
+    while (1) {
+        // Manejar los botones si es necesario
+        handle_btns();
+
+        // Actualizar el display con la hora y los minutos actuales
+        update_display(hours, minutes);
+    }
+
+    return 0;
+}

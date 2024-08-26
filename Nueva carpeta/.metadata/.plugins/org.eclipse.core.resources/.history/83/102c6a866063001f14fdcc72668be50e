@@ -1,0 +1,19 @@
+#include <stddef.h>
+#include "system.h"
+#include "timer.h"
+
+int main() {
+    // Inicializar el temporizador
+    timer_init();
+
+    // Configurar los displays de 7 segmentos
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, 0); // Inicializar los displays
+
+    while (1) {
+        // El procesador entra en un bucle infinito
+        // Las actualizaciones del reloj se hacen en el ISR
+    }
+
+    return 0;
+}
+

@@ -1,0 +1,56 @@
+#include <stddef.h>
+#include "system.h"
+#include "timer.h"
+
+
+handle_btns(){
+
+}
+
+// Mapeo de dígitos a sus correspondientes valores en un display de 7 segmentos
+const alt_u8 SEGMENT_MAP[10] = {
+    0x3F, // 0
+    0x06, // 1
+    0x5B, // 2
+    0x4F, // 3
+    0x66, // 4
+    0x6D, // 5
+    0x7D, // 6
+    0x07, // 7
+    0x7F, // 8
+    0x6F  // 9
+};
+
+void update_display(int hours, int minutes) {
+    alt_u32 display_value = 0;
+
+    // Separar las horas y minutos en dígitos individuales
+    int hour_tens = hours / 10;
+    int hour_units = hours % 10;
+    int minute_tens = minutes / 10;
+    int minute_units = minutes % 10;
+
+    // Mapear los dígitos a sus correspondientes valores en 7 segmentos
+    display_value |= SEGMENT_MAP[hour_tens] << 24;  // Dígito más significativo
+    display_value |= SEGMENT_MAP[hour_units] << 16; // Segundo dígito
+    display_value |= SEGMENT_MAP[minute_tens] << 8; // Tercer dígito
+    display_value |= SEGMENT_MAP[minute_units];     // Dígito menos significativo
+
+    // Escribir el valor al PIO para actualizar los displays
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, display_value);
+}
+
+int main() {
+    // Inicializar el temporizador
+    timer_init();
+
+    // Configurar los displays de 7 segmentos
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, 0); // Inicializar los displays
+
+    while (1) {
+    	update_display();
+    }
+
+    return 0;
+}
+

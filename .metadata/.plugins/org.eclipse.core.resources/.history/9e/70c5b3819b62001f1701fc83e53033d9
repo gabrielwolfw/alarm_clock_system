@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include "timer.h"
+#include "altera_avalon_pio_regs.h"
+#include "system.h"
+
+// Direcciones base para los PIO (definidas en system.h)
+#define BUTTON_PIO_BASE PIO_BUTTONS_0_BASE
+#define DISPLAY_PIO_BASE PIO_7SEGMENTS_0_BASE
+
+// Variables globales para la configuración de la alarma
+volatile int alarm_hours = 7;
+volatile int alarm_minutes = 0;
+volatile int alarm_enabled = 1;
+
+// Funciones para actualizar los displays de 7 segmentos
+void update_display(int display_num, int value) {
+    IOWR_ALTERA_AVALON_PIO_DATA(DISPLAY_PIO_BASE, value);
+}
+
+// Función para manejar la configuración de la alarma con botones
+void handle_buttons() {
+    int btns = IORD_ALTERA_AVALON_PIO_DATA(BUTTON_PIO_BASE);
+
+    if (btns & 0x01) {  // Asumiendo que el botón 1 está en el bit 0
+        alarm_hours = (alarm_hours + 1) % 24;  // Incrementa la hora, reinicia a 0 después de 23
+    }
+    if (btns & 0x02) {  // Asumiendo que el botón 2 está en el bit 1
+        alarm_minutes = (alarm_minutes + 1) % 60;  // Incrementa los minutos, reinicia a 0 después de 59
+    }
+    if (btns & 0x04) {  // Asumiendo que el botón 3 está en el bit 2
+        // Guardar cambios en la configuración de la alarma
+        // Aquí puedes agregar código para manejar la persistencia si es necesario
+    }
+    if (btns & 0x08) {  // Asumiendo que el botón 4 está en el bit 3
+        alarm_enabled = 0;  // Detiene la alarma
+    }
+}
+
+// Función para actualizar la visualización del reloj y la alarma
+void update_time_display() {
+    int hours_display = (alarm_hours / 10) << 4 | (alarm_hours % 10);
+    int minutes_display = (alarm_minutes / 10) << 4 | (alarm_minutes % 10);
+    int alarm_hours_display = (alarm_hours / 10) << 4 | (alarm_hours % 10);
+    int alarm_minutes_display = (alarm_minutes / 10) << 4 | (alarm_minutes % 10);
+
+    // Actualizar los displays
+    update_display(0, hours_display);
+    update_display(1, minutes_display);
+    update_display(2, alarm_hours_display);
+    update_display(3, alarm_minutes_display);
+}
+
+int main() {
+    init_timer();
+
+    while (1) {
+        handle_buttons();
+        update_time_display();
+        // Puedes agregar otras tareas aquí
+    }
+
+    return 0;
+}

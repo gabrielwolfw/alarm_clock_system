@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;nios_alarm/timer.h&apos;" deleteContents="false" description="Delete resource &apos;nios_alarm/timer.h&apos;" element1="/nios_alarm/timer.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1724644650089"/>
+</session>

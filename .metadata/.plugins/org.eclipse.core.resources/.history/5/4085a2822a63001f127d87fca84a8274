@@ -1,0 +1,77 @@
+#include "timer.h"
+#include "system.h"
+#include "HAL/inc/sys/alt_irq.h"
+#include "io.h"
+
+const unsigned char digit_to_segment[10] = {
+    0x3F,  // 0b00111111 - 0
+    0x06,  // 0b00000110 - 1
+    0x5B,  // 0b01011011 - 2
+    0x4F,  // 0b01001111 - 3
+    0x66,  // 0b01100110 - 4
+    0x6D,  // 0b01101101 - 5
+    0x7D,  // 0b01111101 - 6
+    0x07,  // 0b00000111 - 7
+    0x7F,  // 0b01111111 - 8
+    0x6F   // 0b01101111 - 9
+};
+
+volatile int seconds = 0;
+volatile int minutes = 0;
+volatile int hours = 0;
+
+
+void update_time_display() {
+    // Variables para los valores de los displays
+    uint32_t display_data = 0;
+
+    // Convertir horas y minutos a valores adecuados para los displays
+    uint8_t hours_tens = (hours / 10) & 0x0F;
+    uint8_t hours_units = (hours % 10) & 0x0F;
+    uint8_t minutes_tens = (minutes / 10) & 0x0F;
+    uint8_t minutes_units = (minutes % 10) & 0x0F;
+
+    // Obtener los patrones de segmentos para cada dígito (sólo 7 bits relevantes)
+    uint32_t hours_tens_pattern = digit_to_segment[hours_tens] & 0x7F;  // Solo 7 bits
+    uint32_t hours_units_pattern = digit_to_segment[hours_units] & 0x7F; // Solo 7 bits
+    uint32_t minutes_tens_pattern = digit_to_segment[minutes_tens] & 0x7F; // Solo 7 bits
+    uint32_t minutes_units_pattern = digit_to_segment[minutes_units] & 0x7F; // Solo 7 bits
+
+    // Asignar los valores a los bits correspondientes de los displays
+    display_data = (hours_tens_pattern << 21) | (hours_units_pattern << 14) |
+                   (minutes_tens_pattern << 7)  | (minutes_units_pattern);
+
+    // Escribir los valores en el registro PIO
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, display_data);
+}
+
+void timer_isr(void* context) {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+            if (hours >= 24) {
+                hours = 0;
+            }
+        }
+    }
+
+    update_time_display();
+    // Reiniciar el temporizador
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+}
+
+void init_timer() {
+    alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID,
+                        TIMER_0_IRQ,
+                        timer_isr, NULL, NULL);
+
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+                                     ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+                                     ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
+                                     ALTERA_AVALON_TIMER_CONTROL_INTERRUPT_MSK);
+}
+

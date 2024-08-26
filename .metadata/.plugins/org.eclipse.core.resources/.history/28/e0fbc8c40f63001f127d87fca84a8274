@@ -1,0 +1,14 @@
+#ifndef TIMER_H_
+#define TIMER_H_
+
+// Variables globales para el tiempo
+extern volatile int seconds;
+extern volatile int minutes;
+extern volatile int hours;
+
+// Prototipos de funciones
+void timer_isr(void* context);
+void init_timer(void);
+
+#endif /* TIMER_H_ */
+

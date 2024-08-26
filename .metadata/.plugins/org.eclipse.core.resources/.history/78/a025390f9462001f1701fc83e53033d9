@@ -1,0 +1,58 @@
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+
+// Variables globales para la configuración de la alarma
+volatile int alarm_hours = 7;
+volatile int alarm_minutes = 0;
+volatile int alarm_enabled = 1;
+
+// Funciones para actualizar los displays de 7 segmentos
+void update_display(int display_num, int value) {
+    IOWR_ALTERA_AVALON_PIO_DATA(DISPLAY_PIO_BASE + display_num, value);
+}
+
+// Función para manejar la configuración de la alarma con botones
+void handle_buttons() {
+    int btns = IORD_ALTERA_AVALON_PIO_DATA(BUTTON_PIO_BASE);
+
+    if (btns & BUTTON_INC_HOUR) {
+        alarm_hours = (alarm_hours + 1) % 24;  // Incrementa la hora, reinicia a 0 después de 23
+    }
+    if (btns & BUTTON_INC_MIN) {
+        alarm_minutes = (alarm_minutes + 1) % 60;  // Incrementa los minutos, reinicia a 0 después de 59
+    }
+    if (btns & BUTTON_SAVE) {
+        // Guardar cambios en la configuración de la alarma
+        // Aquí puedes agregar código para manejar la persistencia si es necesario
+    }
+    if (btns & BUTTON_STOP_ALARM) {
+        alarm_enabled = 0;  // Detiene la alarma
+    }
+}
+
+// Función para actualizar la visualización del reloj y la alarma
+void update_time_display() {
+    // Suponiendo que tienes 4 displays de 7 segmentos
+    int hours_display = (hours / 10) << 4 | (hours % 10);
+    int minutes_display = (minutes / 10) << 4 | (minutes % 10);
+    int alarm_hours_display = (alarm_hours / 10) << 4 | (alarm_hours % 10);
+    int alarm_minutes_display = (alarm_minutes / 10) << 4 | (alarm_minutes % 10);
+
+    // Actualizar los displays
+    update_display(0, hours_display);
+    update_display(1, minutes_display);
+    update_display(2, alarm_hours_display);
+    update_display(3, alarm_minutes_display);
+}
+
+int main() {
+    init_timer();
+
+    while (1) {
+        handle_buttons();
+        update_time_display();
+        // Puedes agregar otras tareas aquí
+    }
+
+    return 0;
+}
