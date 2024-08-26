@@ -9,6 +9,7 @@ typedef struct {
     int minutes;
 } TimeConfig;
 
+// Funciones para guardar y cargar la configuración
 void save_config(int is_alarm, TimeConfig config);
 TimeConfig load_config(int is_alarm);
 

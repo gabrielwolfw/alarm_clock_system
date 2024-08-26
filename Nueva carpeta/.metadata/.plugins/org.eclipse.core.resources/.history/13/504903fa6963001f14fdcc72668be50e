@@ -7,9 +7,6 @@
 // Definiciones de variables globales
 volatile int hours = 0;
 volatile int minutes = 0;
-volatile int alarm_hours = 0;
-volatile int alarm_minutes = 0;
-volatile int alarm_active = 0;
 
 // Mapeo de dígitos a sus correspondientes valores en un display de 7 segmentos
 const alt_u8 SEGMENT_MAP[10] = {
@@ -60,13 +57,13 @@ void timer_isr(void* context) {
     update_display(hours, minutes);
 
 
-
+    // Verificar si la alarma debe sonar
     if (alarm_active && hours == alarm_hours && minutes == alarm_minutes) {
-        // Encender un dígito específico para indicar que la alarma está activa
-        IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, 0xFF);
+        // Activar la alarma
+        IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, 31);
     } else {
-        // Apagar el dígito específico (o reiniciar el display a su valor normal)
-        IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, 0x00);
+        // Desactivar la alarma si no debe sonar
+        IOWR_ALTERA_AVALON_PIO_DATA(PIO_7SEGMENTS_0_BASE, 30);
     }
 
     // Limpiar la interrupción del temporizador

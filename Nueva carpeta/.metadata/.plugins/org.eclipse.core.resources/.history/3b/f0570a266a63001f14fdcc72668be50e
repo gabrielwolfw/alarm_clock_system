@@ -10,9 +10,6 @@
 // Declaración de variables globales
 extern volatile int hours;
 extern volatile int minutes;
-extern volatile int alarm_hours;
-extern volatile int alarm_minutes;
-extern volatile int alarm_active;
 
 // Declaración de funciones
 void timer_init(void);

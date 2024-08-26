@@ -49,7 +49,7 @@ void handle_btns() {
 
         // Guardar la configuración de la alarma
         if (btns & 0x04) {
-            save_config(config_mode, (TimeConfig){alarm_hours, alarm_minutes});
+            // Puedes almacenar la alarma en la EEPROM si es necesario
         }
 
         // Activar o desactivar la alarma
@@ -60,6 +60,10 @@ void handle_btns() {
 }
 
 int main() {
+    // Inicializar las variables globales
+    hours = 0;
+    minutes = 0;
+
     // Inicializar el temporizador
     timer_init();
 
@@ -68,7 +72,9 @@ int main() {
 
     while (1) {
         handle_btns();
+        // No es necesario actualizar el display aquí, se hace en la ISR
     }
 
     return 0;
 }
+

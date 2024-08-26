@@ -7,9 +7,6 @@
 // Definiciones de variables globales
 volatile int hours = 0;
 volatile int minutes = 0;
-volatile int alarm_hours = 0;
-volatile int alarm_minutes = 0;
-volatile int alarm_active = 0;
 
 // Mapeo de dígitos a sus correspondientes valores en un display de 7 segmentos
 const alt_u8 SEGMENT_MAP[10] = {
